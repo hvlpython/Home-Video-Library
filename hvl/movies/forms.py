@@ -1,3 +1,4 @@
+from django.db.models.fields.files import ImageField
 from django.forms import ModelForm, CharField, IntegerField, TextInput
 from movies.models import Movie
 
@@ -11,4 +12,10 @@ class MovieForm(ModelForm):
 
     class Meta:
         model = Movie
-        fields = "__all__"
+        fields = ("title", "genre", "director", "trailer", "year", "movie_image")
+
+    def __init__(self, *args, **kwargs):
+        super(MovieForm, self).__init__(*args, **kwargs)
+
+        self.fields["movie_image"].widget.attrs["class"] = "custom-file"
+        
