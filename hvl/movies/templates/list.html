@@ -4,8 +4,7 @@
 
 <h1>Movie List</h1>
 <br/>
-    {% for m in movies %}
-        <p>{{ m }}<p>
+    {% for movie in object_list %}
+        <p><a href="{% url detail_url pk=movie.pk %}">{{ movie }}</a></p>
     {% endfor %}
-
 {% endblock %}

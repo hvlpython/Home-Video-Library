@@ -1,0 +1,10 @@
+<!DOCTYPE html>
+<html lang="en">
+{% extends "base.html" %}
+{% block content %}
+
+
+    <p><a href="{% url 'movie-delete' pk=movie.pk %}">Delete movie: {{ movie }}</a></p>
+    <p><a href="{% url 'movie-update' pk=movie.pk %}">Update movie: {{ movie }}</a></p>
+
+{% endblock %}
