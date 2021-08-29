@@ -1,11 +1,11 @@
 from django.db import models
-from django.core.validators import  MaxValueValidator, MinValueValidator
+from django.core.validators import MaxValueValidator, MinValueValidator
 
 from movies.models import Movie
 
 
 class Rating(models.Model):
-    movie = models.ForeignKey(Movie , on_delete=models.CASCADE)
+    movie = models.ForeignKey(Movie, on_delete=models.CASCADE)
     rating = models.IntegerField(default=0, validators=[MaxValueValidator(5), MinValueValidator(0)])
 
     def __str__(self):
