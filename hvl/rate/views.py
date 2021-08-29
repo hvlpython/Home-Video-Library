@@ -1,3 +1,5 @@
 from django.shortcuts import render
+from django.views.generic import CreateView
 
-# Create your views here.
+class RatingCreateView(CreateView):
+    template_name = "create.html"
