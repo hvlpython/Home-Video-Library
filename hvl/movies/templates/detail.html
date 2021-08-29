@@ -9,7 +9,7 @@
     <p>YEAR: {{ movie.year }}</p>
     <p>GENRE: {{ movie.genre }}</p>
     <p>DIRECTOR: {{ movie.director }}</p>
-    <p>TRAILER: {{ movie.trailer }}</p>
+    <p>TRAILER: <a href= {{ movie.trailer }}>Watch trailer here</a></p>
 
     <p><a href="{% url 'movie-delete' pk=movie.pk %}">Delete movie: {{ movie }}</a></p>
     <p><a href="{% url 'movie-update' pk=movie.pk %}">Update movie: {{ movie }}</a></p>
