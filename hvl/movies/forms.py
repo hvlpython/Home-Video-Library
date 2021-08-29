@@ -14,11 +14,6 @@ class MovieForm(ModelForm):
         model = Movie
         fields = ("title", "genre", "director", "trailer", "year", "movie_image")
 
-    # def __init__(self, *args, **kwargs):
-    #     super(MovieForm, self).__init__(*args, **kwargs)
-    #
-    #     self.fields["movie_image"].widget.attrs["class"] = "custom-file"
-
 
 class GenreForm(ModelForm):
     name = CharField(max_length=128, widget=TextInput(attrs={"class": "form-control"}))
