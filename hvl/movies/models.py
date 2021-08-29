@@ -14,7 +14,7 @@ class Movie(models.Model):
     director = models.CharField(max_length=128)
     trailer = models.CharField(max_length=128)
     year = models.IntegerField()
-    movie_image = models.ImageField(blank=True, null=True, upload_to="images/")
+    movie_image = models.ImageField(blank=True, null=True, upload_to="images/mowies-image")
 
     def __str__(self):
         return f"{self.title}"
