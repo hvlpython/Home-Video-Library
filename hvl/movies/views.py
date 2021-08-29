@@ -1,8 +1,8 @@
 from django.views.generic import \
     CreateView, UpdateView, DeleteView, DetailView, ListView
-from movies.forms import MovieForm
+from movies.forms import GenreForm, MovieForm
 from django.urls.base import reverse_lazy
-from movies.models import Movie
+from movies.models import Genre, Movie
 
 
 class MovieCreateView(CreateView):
