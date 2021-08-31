@@ -133,4 +133,6 @@ dmypy.json
 .vscode
 .vscode/
 
-media/images/mowies-image/
+media/images/movies-image/
+images/movies-image/
+movies-image/

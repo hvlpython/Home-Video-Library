@@ -17,9 +17,11 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
+from movies.views import MovieListView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('', MovieListView.as_view(), name='movie-list'),
     path('accounts/', include('accounts.urls')),
     path('accounts/', include('django.contrib.auth.urls')),
     path('movies/', include('movies.urls')),
