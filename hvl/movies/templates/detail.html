@@ -1,11 +1,16 @@
-<!DOCTYPE html>
-<html lang="en">
 {% extends "base.html" %}
+{% load static %}
 {% block content %}
 
 
 
     <h2><p>{{ movie.title }}</p></h2>
+    {% if movie.movie_image %}
+    <img src="{{ movie.movie_image.url }}" width="190" height="280"/>
+    {% else %}
+    <img src="{% static 'movies/images/default_movie_image.jpg' %}" width="190" height="280"/>
+    {% endif %}  
+    <br/><br/>
     <p>YEAR: {{ movie.year }}</p>
     <p>GENRE: {{ movie.genre }}</p>
     <p>DIRECTOR: {{ movie.director }}</p>
