@@ -12,19 +12,20 @@ class IsSuperuserMixin(UserPassesTestMixin):
     def test_func(self):
         return self.request.user.is_superuser
 
+
 class IsUserNameMixin(UserPassesTestMixin):
     def test_func(self):
-        return self.request.user.username      
+        return self.request.user.username
 
 
 class UserRegisterView(IsSuperuserMixin, CreateView):
     form_class = UserRegisterForm
-    template_name= "registration/register.html"
+    template_name = "registration/register.html"
 
 
-class UserEditView(IsUserNameMixin,UpdateView):
+class UserEditView(IsUserNameMixin, UpdateView):
     form_class = UserEditProfileForm
-    template_name= "registration/edit-profile.html"
+    template_name = "registration/edit-profile.html"
 
     def get_object(self):
         return self.request.user
@@ -40,6 +41,7 @@ class PasswordsChangeView(IsUserNameMixin, PasswordChangeView):
 def password_success(request):
     return render(request, 'registration/password-success.html')
 
+
 def user_register_request(request):
     if request.method == "POST":
         username = request.POST['username']
@@ -50,7 +52,7 @@ def user_register_request(request):
         send_mail(
             "Registration Message from " + username,
             "Please register my with the data: \n\n" "Username: " + username + "\n" + "First Name: " + first_name + "\n" +
-                "Last Name: " + last_name + "\n" + "Email: " + email,
+            "Last Name: " + last_name + "\n" + "Email: " + email,
             email,
             ["hvlpython@gmail.com"]
         )

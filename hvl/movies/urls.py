@@ -8,5 +8,4 @@ urlpatterns = [
     path('movie-update/<pk>/', MovieUpdateView.as_view(), name='movie-update'),
     path('movie-delete/<pk>/', MovieDeleteView.as_view(), name='movie-delete'),
     path('movie-detail/<pk>/', MovieDetailView.as_view(), name='movie-detail'),
-    ]
-    
+]

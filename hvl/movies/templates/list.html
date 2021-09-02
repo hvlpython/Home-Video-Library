@@ -5,13 +5,19 @@
 
 <h1>Movie List</h1>
 <br/>
+<div class="form-row">
+
     {% for movie in object_list %}
         <p><a href="{% url detail_url pk=movie.pk %}">
-        {% if movie.movie_image %}
-            <img src="{{ movie.movie_image.url }}"width="190" height="280"/>
-        {% else %}
-            <img src="{% static 'movies/images/default_movie_image.jpg' %}" width="190" height="280">
-        {% endif %}        
-        {{ movie }} </a></p>
+            {% if movie.movie_image %}
+                <img src="{{ movie.movie_image.url }} "width="190" height="280"/>
+            {% else %}
+                <img src="{% static 'movies/images/default_movie_image.jpg' %} " width="190" height="280">
+            {% endif %}
+                {{ movie }} 
+        </a></p>
     {% endfor %}
+
+</div>
+
 {% endblock %}

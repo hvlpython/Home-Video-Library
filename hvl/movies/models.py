@@ -10,12 +10,13 @@ class Genre(models.Model):
 
 class Movie(models.Model):
     title = models.CharField(max_length=128)
-    genre = models.ForeignKey(Genre, on_delete=models.CASCADE, null=True, blank=True, default=None, max_length=128)
+    genre = models.ForeignKey(Genre, on_delete=models.CASCADE,
+                              null=True, blank=True, default=None, max_length=128)
     director = models.CharField(max_length=128)
     trailer = models.URLField(max_length=200)
     year = models.IntegerField()
-    movie_image = models.ImageField(blank=True, null=True, upload_to="images/movies-image")
+    movie_image = models.ImageField(
+        blank=True, null=True, upload_to="images/movies-image")
 
     def __str__(self):
         return f"{self.title}"
-
