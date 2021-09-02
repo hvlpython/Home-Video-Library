@@ -1,8 +1,8 @@
 {% extends 'base.html' %}
-{% block title %}Movies{% endblock %}
+{% block title %}Add Movie{% endblock %}
 {% block content %}
 
-<h1>Movies</h1>
+<h1>Add Movie</h1>
 <br/><br/>
 
 <div class="form-group">
@@ -10,5 +10,5 @@
         {% csrf_token %}
         {{ form.as_p }}
         <button class="btn btn-secondary">Add Movie</button>
-
+</div>
 {% endblock %}
