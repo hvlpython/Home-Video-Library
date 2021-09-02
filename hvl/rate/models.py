@@ -1,5 +1,6 @@
 from django.db import models
 from django.core.validators import MaxValueValidator, MinValueValidator
+from django.db.models import Avg
 
 from movies.models import Movie
 
@@ -11,6 +12,10 @@ class Rating(models.Model):
     # # unique, it's probably bad
     # class Meta:
     #     unique_together = ('rating', 'movie')
+    # @property
+    # def aver(self):
+    #     return Movie.objects.annotate(avg_rating=Avg('rating_set__rating')).order_by('-avg_rating')
+
 
     def __str__(self):
         return f"{self.rating}"

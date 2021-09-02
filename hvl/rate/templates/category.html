@@ -2,11 +2,11 @@
 {% block title %}Movies{% endblock %}
 {% block content %}
 
-<h1>Movie List</h1>
+<h1>Movie Genre</h1>
 <br/>
-    {% for movie in object_list %}
-        <p><a href="{% url detail_url pk=movie.pk %}">{{ movie }}</a></p>
-<!--zmiany-->
+    {% for movie in allmovies %}
+        <p><a href="{% url genre_url name=movie.name %}">{{ movie }}</a></p>
+
 <!--        {% for product in allproducts %}-->
 <!--            #average rating for that product-->
 <!--            {{ product.get_avg_rating }}-->
