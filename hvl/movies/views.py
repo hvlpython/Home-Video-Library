@@ -12,7 +12,7 @@ class MovieCreateView(IsUserNameMixin, CreateView):
     success_url = reverse_lazy("movie-list")
 
 
-class MovieListView(IsUserNameMixin,ListView):
+class MovieListView(IsUserNameMixin, ListView):
     model = Movie
     template_name = "list.html"
     extra_context = {"detail_url": "movie-detail"}
@@ -34,4 +34,3 @@ class MovieDeleteView(IsUserNameMixin, DeleteView):
 class MovieDetailView(IsUserNameMixin, DetailView):
     model = Movie
     template_name = "detail.html"
-
