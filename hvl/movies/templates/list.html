@@ -6,11 +6,5 @@
 <br/>
     {% for movie in object_list %}
         <p><a href="{% url detail_url pk=movie.pk %}">{{ movie }}</a> {{ movie.get_avg_rating }}  </p>
-        <p> {{ movie.get_avg_rating }}</p>
-<!--zmiany-->
-<!--        {% for product in allproducts %}-->
-<!--            #average rating for that product-->
-<!--            {{ product.get_avg_rating }}-->
-<!--        {% endfor %}-->
     {% endfor %}
 {% endblock %}
