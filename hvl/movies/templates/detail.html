@@ -19,4 +19,6 @@
     <p><a href="{% url 'movie-delete' pk=movie.pk %}">Delete movie: {{ movie }}</a></p>
     <p><a href="{% url 'movie-update' pk=movie.pk %}">Update movie: {{ movie }}</a></p>
 
+    <p>BORROWED BY: {{ movie.borrowed_by }}</p>
+
 {% endblock %}
