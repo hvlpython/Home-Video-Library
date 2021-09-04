@@ -14,7 +14,7 @@ class RatingCreateView(View):
     def post(self, request):
         print(request.POST)
         return HttpResponse("hrh")
-    #
+
 
     # def form_valid(self, form):
     #     print(form)
