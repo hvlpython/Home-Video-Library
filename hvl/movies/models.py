@@ -35,6 +35,8 @@ class Movie(models.Model):
         sum = 0
         for rvw in reviews:
             sum += rvw.rating
+        if count == 0:
+            return f"This movie is not rated yet"
         return (sum / count)
     #///
     def __str__(self):
