@@ -1,7 +1,6 @@
 from django.db import models
+from django.contrib.auth.models import User
 from django.db.models import Avg
-
-
 
 
 class Genre(models.Model):
@@ -13,20 +12,16 @@ class Genre(models.Model):
 
 class Movie(models.Model):
     title = models.CharField(max_length=128)
-    genre = models.ForeignKey(Genre, on_delete=models.CASCADE, null=True, blank=True, default=None, max_length=128)
+    genre = models.ForeignKey(Genre, on_delete=models.CASCADE,
+                              null=True, blank=True, default=None, max_length=128)
     director = models.CharField(max_length=128)
-    trailer = models.CharField(max_length=128)
+    trailer = models.URLField(max_length=200)
     year = models.IntegerField()
-    movie_image = models.ImageField(blank=True, null=True, upload_to="images/mowies-image")
+    movie_image = models.ImageField(
+        blank=True, null=True, upload_to="images/movies-image")
+    borrowed_by = models.ForeignKey(User, on_delete=models.CASCADE,
+                              null=True, blank=True)
 
-    #zmiany
-    # @property
-    # def average_rating(self):
-    #     data = self.movie.all().aggregate(Avg('rating')).get('rating__avg', 0.00)
-    #     print(data)
-    #     return data
-        # Change 0.00 to whatever default value you want when there
-        # are no reviews.
     @property
     def get_avg_rating(self):
         from rate.models import Rating
@@ -37,8 +32,7 @@ class Movie(models.Model):
             sum += rvw.rating
         if count == 0:
             return f"This movie is not rated yet"
-        return (sum / count)
-    #///
+        return sum/count
+
     def __str__(self):
         return f"{self.title}"
-

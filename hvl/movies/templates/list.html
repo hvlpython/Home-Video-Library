@@ -1,9 +1,37 @@
 {% extends "base.html" %}
 {% block title %}Movies{% endblock %}
+{% load static %}
 {% block content %}
 
 <h1>Movie List</h1>
 <br/>
+
+
+    <div class="row">
+        {% for movie in object_list %}
+
+        <div class="card text-white bg-dark mb-3" style="max-width: 150px;">
+            <div class="card-body">
+                <p class="card-text">
+                    <a href="{% url detail_url pk=movie.pk %}">
+                        {% if movie.movie_image %}
+                            <img src="{{ movie.movie_image.url }} "width="114" height="170"/>
+                        {% else %}
+                            <img src="{% static 'movies/images/default_movie_image.jpg' %} " width="114" height="170">
+                        {% endif %}
+                    </a>
+                </p>
+            </div>
+            <div class="card-footer bg-transparent border-success">
+            {{ movie }}
+            </div>
+        </div>
+        <div style="padding: 5px;"></div>
+        {% endfor %}
+
+    </div>
+
+
     {% for movie in object_list %}
         <p><a href="{% url detail_url pk=movie.pk %}">{{ movie }}</a> {{ movie.get_avg_rating }}  </p>
     {% endfor %}

@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% block title %}Registration Request{% endblock %}
+{% block content %}
+
+<h1>Registration request</h1>
+<br/><br/>
+
+{% if username %}
+<center>
+    <h2> Thenks {{ username }} for the registration request!</h2>
+    <p>We recceived your wmail and will response shortyl for the request!</p>
+</center>
+{% else %}
+<div class="form-group">
+    <form action={% url 'user_register_request' %} method="POST">
+        {% csrf_token %}
+        
+        <div class="form-group">
+            <input type="text" class="form-control" name="username" placeholder="Username" style="width:350px">
+        </div>
+        <div class="form-group">
+            <input type="text" class="form-control" name="first_name" placeholder="First Name" style="width:350px">
+        </div>
+        <div class="form-group">
+            <input type="text" class="form-control" name="last_name" placeholder="Last Name" style="width:350px">
+        </div>
+        <div class="form-group">
+            <input type="text" class="form-control" name="email" placeholder="Email" style="width:350px">
+        </div>
+        <br/>
+        <button class="btn btn-secondary">Send Request</button>
+        <br/></br>
+        
+</div>
+{% endif %}
+{% endblock %}
