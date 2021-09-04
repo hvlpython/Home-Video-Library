@@ -1,3 +1,4 @@
+from django.db.models.fields import TextField
 from django.forms import ModelForm, CharField, IntegerField, TextInput, ModelChoiceField, Select, IntegerField
 from movies.models import Genre, Movie
 from django.contrib.auth.models import User
@@ -24,12 +25,17 @@ class MovieForm(ModelForm):
     trailer = CharField(max_length=128,
                         widget=TextInput(attrs={"class": "form-control"}))
 
-    year = FutureDateField(widget=TextInput(attrs={"class": "custom-select"}))
+    year = FutureDateField(widget=TextInput(attrs={"class": "custom-select"}))      
 
     class Meta:
         model = Movie
         fields = ("title", "genre", "director",
-                  "trailer", "year", "movie_image")
+                  "trailer", "year", "movie_image", "movie_description")
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+
+        self.fields["movie_description"].widget.attrs["class"] = "form-control"
 
 
 class UpdateMovieForm(MovieForm):
@@ -40,7 +46,7 @@ class UpdateMovieForm(MovieForm):
     class Meta:
         model = Movie
         fields = ("title", "genre", "director",
-                  "trailer", "year", "movie_image", "borrowed_by")
+                  "trailer", "year", "movie_image", "borrowed_by", "movie_description")
 
 
 class GenreForm(ModelForm):
