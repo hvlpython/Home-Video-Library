@@ -23,8 +23,8 @@
                     </a>
                 </p>
             </div>
-            <div class="card-footer bg-transparent border-success">
-            {{ movie }}
+            <div class="card-footer bg-transparent border-primary">
+            <a class="btn btn-dark" href="{% url detail_url pk=movie.pk %}">{{ movie|truncatechars:10 }}</a>
             </div>
         </div>
         <div style="padding: 5px;"></div>

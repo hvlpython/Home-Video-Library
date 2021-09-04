@@ -3,6 +3,7 @@ from django.contrib.auth.models import User
 from django.db.models import Avg
 
 
+
 class Genre(models.Model):
     name = models.CharField(max_length=128)
 
@@ -14,13 +15,15 @@ class Movie(models.Model):
     title = models.CharField(max_length=128)
     genre = models.ForeignKey(Genre, on_delete=models.CASCADE,
                               null=True, blank=True, default=None, max_length=128)
+
     director = models.CharField(max_length=128)
     trailer = models.URLField(max_length=200)
     year = models.IntegerField()
-    movie_image = models.ImageField(
-        blank=True, null=True, upload_to="images/movies-image")
+    movie_image = models.ImageField(blank=True,
+                                    null=True, upload_to="images/movies-image")
+
     borrowed_by = models.ForeignKey(User, on_delete=models.CASCADE,
-                              null=True, blank=True)
+                                    null=True, blank=True)
 
     @property
     def get_avg_rating(self):
