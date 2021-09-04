@@ -15,7 +15,13 @@ class Rating(models.Model):
     # @property
     # def aver(self):
     #     return Movie.objects.annotate(avg_rating=Avg('rating_set__rating')).order_by('-avg_rating')
-
-
     def __str__(self):
         return f"{self.rating}"
+
+class Comment(models.Model):
+    movie = models.ForeignKey(Movie,related_name="comments", on_delete=models.CASCADE)
+    name = models.CharField(max_length=128)
+    body = models.TextField()
+
+    def __str__(self):
+        return f"{self.movie.title} {self.name}"
