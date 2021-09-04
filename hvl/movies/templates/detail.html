@@ -28,8 +28,8 @@
             </div>
             <div class="card-footer bg-transparent border-primary">
                 <center>
-                <p><a class="btn btn-dark" href="{% url 'movie-delete' pk=movie.pk %}">Delete movie</a></p>
                 <p><a class="btn btn-dark" href="{% url 'movie-update' pk=movie.pk %}">Update movie</a></p>
+                <p><a class="btn btn-dark" href="{% url 'movie-delete' pk=movie.pk %}">Delete movie</a></p>
                 </center>
             </div>
             <div class="card-footer bg-transparent border-primary">
@@ -38,10 +38,10 @@
         </div>
     </div>
     <div style="padding: 5px;"></div>
-    <div class="card text-white bg-dark mb-3" style="max-width: 300px;">
+    <div class="card text-white bg-dark mb-3" style="max-width: 800px; max-height: 490px">
         <div class="card-header">{{ movie }}</div>
         <div class="card-body">
-            <p class="card-text">Some quick example text about the movie</p>
+            <p class="card-text">{{ movie.movie_description}}</p>
         </div>
         <div class="card-footer bg-transparent border-primary">
             <form method="post" action="{% url 'rate' %}" >

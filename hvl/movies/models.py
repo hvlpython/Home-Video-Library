@@ -23,7 +23,9 @@ class Movie(models.Model):
                                     null=True, upload_to="images/movies-image")
 
     borrowed_by = models.ForeignKey(User, on_delete=models.CASCADE,
-                                    null=True, blank=True)
+                                    null=True, blank=True, default=None)
+
+    movie_description = models.TextField(null=True, blank=True, default=None)
 
     @property
     def get_avg_rating(self):
