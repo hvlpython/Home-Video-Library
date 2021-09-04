@@ -4,6 +4,7 @@ from movies.forms import GenreForm, MovieForm
 from django.urls.base import reverse_lazy
 from movies.models import Genre, Movie
 from accounts.views import IsUserNameMixin
+from rate.forms import RatingForm
 
 
 class MovieCreateView(IsUserNameMixin, CreateView):

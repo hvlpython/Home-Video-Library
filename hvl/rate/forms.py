@@ -1,10 +1,14 @@
-from django.forms import ModelForm
+from django import forms
+from django.forms import HiddenInput
+
 from rate.models import Rating
 
-class RatingForm(ModelForm):
-    form_class = Rating
+
+class RatingForm(forms.Form):
+    rating = forms.IntegerField()
+    movie = forms.IntegerField(widget=HiddenInput())
 
 
-    class Meta:
-        model = Rating
-        fields = "__all__"
+    def __init__(self, *args, instance=None, **kwargs):
+        super().__init__(*args, **kwargs)
+        print(instance)
