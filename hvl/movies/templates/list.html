@@ -28,8 +28,11 @@
         </div>
         <div style="padding: 5px;"></div>
         {% endfor %}
-    
+
     </div>
 
 
+    {% for movie in object_list %}
+        <p><a href="{% url detail_url pk=movie.pk %}">{{ movie }}</a> {{ movie.get_avg_rating }}  </p>
+    {% endfor %}
 {% endblock %}
