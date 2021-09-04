@@ -1,6 +1,6 @@
 from django.views.generic import \
     CreateView, UpdateView, DeleteView, DetailView, ListView
-from movies.forms import GenreForm, MovieForm
+from movies.forms import GenreForm, MovieForm, UpdateMovieForm
 from django.urls.base import reverse_lazy
 from movies.models import Genre, Movie
 from accounts.views import IsUserNameMixin
@@ -22,7 +22,7 @@ class MovieUpdateView(IsUserNameMixin, UpdateView):
     model = Movie
     template_name = 'update.html'
     success_url = reverse_lazy("movie-list")
-    form_class = MovieForm
+    form_class = UpdateMovieForm
 
 
 class MovieDeleteView(IsUserNameMixin, DeleteView):
