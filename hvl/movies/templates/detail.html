@@ -2,30 +2,64 @@
 {% load static %}
 {% block content %}
 
-
 <br/>
-    <h2><p>{{ movie.title }}</p></h2>
-    <p>{{ movie.get_avg_rating }}</p>
-    {% if movie.movie_image %}
-    <img src="{{ movie.movie_image.url }}" width="190" height="280"/>
-    {% else %}
-    <img src="{% static 'movies/images/default_movie_image.jpg' %}" width="190" height="280"/>
-    {% endif %}  
-    <br/><br/>
-    <p>YEAR: {{ movie.year }}</p>
-    <p>GENRE: {{ movie.genre }}</p>
-    <p>DIRECTOR: {{ movie.director }}</p>
-    <p>TRAILER: <a href="{{ movie.trailer }}" target="_blank">Watch trailer here</a></p>
+<div class="row">
+    <div class="card text-white bg-dark mb-3" style="max-width: 300px;">
+        <div class="card-header">{{ movie }} <br/> Raiting: {{ movie.get_avg_rating }} / 5</div>
+        <div class="card-body">
+            <h5 class="card-title">
+            <center>
+            {% if movie.movie_image %}
+                <img src="{{ movie.movie_image.url }}" width="190" height="280"/>
+            {% else %}
+                <img src="{% static 'movies/images/default_movie_image.jpg' %}" width="190" height="280"/>
+            {% endif %}
+            </center>
+            </h5>
+            <div class="card-footer bg-transparent border-primary">
+                <p>Year: {{ movie.year }}</p>
+                <p>Genre: {{ movie.genre }}</p>
+                <p>Director: {{ movie.director }}</p>
+            </div>
+            <div class="card-footer bg-transparent border-primary">
+                <center>
+                <p>Watch trailer on Youtube for:<a href="{{ movie.trailer }}" target="_blank"><br/>{{ movie }}</a></p>
+                </center>
+            </div>
+            <div class="card-footer bg-transparent border-primary">
+                <center>
+                <p><a class="btn btn-dark" href="{% url 'movie-delete' pk=movie.pk %}">Delete movie</a></p>
+                <p><a class="btn btn-dark" href="{% url 'movie-update' pk=movie.pk %}">Update movie</a></p>
+                </center>
+            </div>
+            <div class="card-footer bg-transparent border-primary">
+                <p><p>Borrowed by: {{ movie.borrowed_by }}</p></p>
+            </div>
+        </div>
+    </div>
+    <div style="padding: 5px;"></div>
+    <div class="card text-white bg-dark mb-3" style="max-width: 300px;">
+        <div class="card-header">{{ movie }}</div>
+        <div class="card-body">
+            <p class="card-text">Some quick example text about the movie</p>
+        </div>
+        <div class="card-footer bg-transparent border-primary">
+            <form method="post" action="{% url 'rate' %}" >
+                {% csrf_token %}
+                <p><label for="id_rating">Rating:</label> <input type="number" name="rating" value="0" required id="id_rating"></p>
+                <p><input type="hidden" name="movie" value={{ movie.pk }} required id="id_movie"></p>
+                <input type="submit" value="Save">
+            </form>
+        </div>
+    </div>
+</div>
 
-    <p><a href="{% url 'movie-delete' pk=movie.pk %}">Delete movie: {{ movie }}</a></p>
-    <p><a href="{% url 'movie-update' pk=movie.pk %}">Update movie: {{ movie }}</a></p>
-    <p><div class="card-header"><a href="{% url 'rate' %} ">RATING</a> {{ movie.get_avg_rating }}</div></p>
-    <p>BORROWED BY: {{ movie.borrowed_by }}</p>
-    <form method="post" action="{% url 'rate' %}" >
-        {% csrf_token %}
-        <p><label for="id_rating">Rating:</label> <input type="number" name="rating" value="0" required id="id_rating"></p>
-        <p> <input type="hidden" name="movie" value={{ movie.pk }} required id="id_movie"></p>
-        <input type="submit" value="Save">
-    </form>
+
+
+
+
+
+
+
 
 {% endblock %}
