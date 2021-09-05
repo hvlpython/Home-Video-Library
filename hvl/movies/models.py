@@ -1,7 +1,5 @@
-from django.db import models
 from django.contrib.auth.models import User
-from django.db.models import Avg
-
+from django.db import models
 
 
 class Genre(models.Model):
@@ -35,7 +33,7 @@ class Movie(models.Model):
             sum += rvw.rating
         if count == 0:
             return 0.0
-        return sum / count
+        return round(sum / count, 2)
 
     def __str__(self):
         return f"{self.title}"
