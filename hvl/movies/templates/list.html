@@ -11,7 +11,7 @@
         {% for movie in object_list %}
 
         <div class="card text-white bg-dark mb-3" style="max-width: 150px;">
-            <div class="card-header"><a href="{% url 'rate' %} ">RATING</a> {{ movie.get_avg_rating }}</div>
+            <div class="card-header">RATING: {{ movie.get_avg_rating }}</div>
             <div class="card-body">
                 <p class="card-text">
                     <a href="{% url detail_url pk=movie.pk %}">
