@@ -7,9 +7,5 @@
     {% for movie in allmovies %}
         <p><a href="{% url genre_url name=movie.name %}">{{ movie }}</a></p>
 
-<!--        {% for product in allproducts %}-->
-<!--            #average rating for that product-->
-<!--            {{ product.get_avg_rating }}-->
-<!--        {% endfor %}-->
     {% endfor %}
 {% endblock %}
