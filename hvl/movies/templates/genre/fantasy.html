@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block title %}Fantasy Movies{% endblock %}
+{% load static %}
+{% block content %}
+
+<h1>Fantasy Movie List</h1>
+<br/>
+
+
+    <div class="row">
+        {% for movie in object_list %}
+        <div class="card text-white bg-dark mb-3" style="max-width: 150px;">
+            <div class="card-header">RATING: {{ movie.get_avg_rating }}</div>
+            <div class="card-body">
+                <p class="card-text">
+                    <a href="{% url detail_url pk=movie.pk %}">
+                        {% if movie.movie_image %}
+                            <img src="{{ movie.movie_image.url }} "width="114" height="170"/>
+                        {% else %}
+                            <img src="{% static 'movies/images/default_movie_image.jpg' %} " width="114" height="170">
+                        {% endif %}
+                    </a>
+                </p>
+            </div>
+            <div class="card-footer bg-transparent border-primary">
+            <a class="btn btn-dark" href="{% url detail_url pk=movie.pk %}">{{ movie|truncatechars:10 }}</a>
+            </div>
+        </div>
+        <div style="padding: 5px;"></div>
+        
+
+        {% endfor %}
+
+    </div>
+{% endblock %}
